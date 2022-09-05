@@ -1,1 +1,4 @@
-# test1
+#  DRONet: Effectiveness-driven drug repositioning framework using network embedding and ranking learning
+## 1. Introduction
+This repository contains source code and datasets for paper "DRONet: Effectiveness-driven drug repositioning framework using network embedding and ranking learning". In this study, we proposed a drug repositioning framework termed DRONet, which make full use of effectiveness contrast relationships among drugs by combining network embedding and ranking learning. We utilized network embedding methods to learn the deep features of drugs from a heterogeneous drug-disease network, and constructed a high-quality drug-indication data set including effectiveness-based drug contrast relationships. The embedding features and effectiveness contrast relationships of drugs are combined effectively through a designed ranking learning model to prioritize candidate drugs.
+## 2. Overview
