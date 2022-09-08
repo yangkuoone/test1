@@ -11,18 +11,19 @@ $ conda activate NE
 $ pip install -r requirements.txt
 ```
 ## 4.Methods
+The network embedding learning uses the code from [BioNEV](https://github.com/xiangyue9607/BioNEV). The code of [learning to rank](https://github.com/haowei01/pytorch-examples) is from their authors. To ensure different source code could run successfully in our framework, we modify part of their source code.
 ### 4.1 Network Embedding for the features of drugs and diseases
 #### 4.1.1 Dataset
-- graph_dis_drug.edgelist：a drug-disease association data extracted from SemMed Database.
-- graph_dis.edgelist：a disease-disease association data based on cosine similarity to calculate gene-based disease similarity.
-- graph_drug.edgelist：a drug-drug association data based on cosine similarity to calculate target-based drug similarity.
+- graph_dis_drug.edgelist：a curated drug-phenotype association data from SemMed Database.
+- graph_dis.edgelist：a phenotype-phenotype association data that utilizes cosine similarity to obtain gene-based disease similarity.
+- graph_drug.edgelist：a drug-drug association data that utilizes cosine similarity to obtain target-based drug similarity
 #### 4.1.2 Running
 ```
 nohup python -u main.py --method DeepWalk > DeepWalk.txt 2>&1 &
 ```
 - --input, input graph file. Only accepted edgelist format.
 - --output, output graph embedding file.
-- --method, the name of embedding method.(i.e.,GF, GraRep, HOPE, DeepWalk, node2vec,  LINE, SDNE, GAE)
+- --method, the name of embedding method. (i.e.,GF, GraRep, HOPE, DeepWalk, node2vec,  LINE, SDNE, GAE)
 - --testing-ratio, testing set ratio for prediction tasks. Only applied when --task is not none. The default is 0.2
 - --dimensions, the dimensions of embedding for each node. The default is 100.
 - --method, the name of embedding method.
@@ -58,7 +59,7 @@ nohup python -u main.py --method DeepWalk > DeepWalk.txt 2>&1 &
 ```
 nohup python -u main.py --method LambdaRank > test_res.txt 2>&1 &
 ```
-- --method, the learning to rank method(i.e., LambdaMART, LambdaRank, RankNet).
+- --method, the learning to rank method (i.e., LambdaMART, LambdaRank, RankNet).
 - --number, the number of regression tree. The default is 0.2
 - --lr_LM, learning rate of LambdaMART. The default is 0.0005.
 - --h1_units, the first hidden layer. The default is 512.
@@ -69,7 +70,7 @@ nohup python -u main.py --method LambdaRank > test_res.txt 2>&1 &
 - --start_epoch. The default is 0.
 - --additional_epoch. The default is 100.
 - --lr_RN, learning rate of RankNet. The default is 0.0005.
-- --optim, optimizer(i.e., adam, sgd). The default is adam.
+- --optim, optimizer (i.e., adam, sgd). The default is adam.
 - --leaky_relu, activation function.
 - --ndcg_gain_in_train. The default is exp2.
 - --small_dataset. The default is False.
